@@ -66,10 +66,12 @@ class _ExampleState extends State<Example> {
           ListTile(
             title: Text(text: 'List Tile')
           ),
-          TextField(),
+          TextField(
+            onChanged: event "login changed" {},
+          ),
           TextField(),
           ElevatedButton(
-            onPressed: event "increment" { },
+            onPressed: event "btn click" { },
             child: Text(text: 'Login')
           )          
         ],
@@ -92,6 +94,11 @@ class _ExampleState extends State<Example> {
         runtime: _runtime,
         data: _data,
         widget: const FullyQualifiedWidgetName(LibraryName(<String>['main']), 'root'),
+        onEvent: (String eventName, Map<String, dynamic> args) {
+          if (eventName == 'login changed') {
+            print(args);
+          }
+        },
       );
     } else {
       result = const Material(

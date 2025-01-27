@@ -7,6 +7,9 @@ LocalWidgetLibrary createLocalCustomWidgets() => LocalWidgetLibrary(_materialWid
 Map<String, LocalWidgetBuilder> get _materialWidgetsDefinitions =>
     <String, LocalWidgetBuilder>{
       'TextField': (BuildContext context, DataSource source) {
-        return TextField();
+
+        return TextField(
+          onChanged: source.handler(<Object>['onChanged'], (HandlerTrigger trigger) => (Object? value) => trigger(<String, Object?>{'value': value})),
+        );
       },
     };
